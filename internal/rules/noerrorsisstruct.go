@@ -76,7 +76,7 @@ func noErrorIsStruct(pass *analysis.Pass) (interface{}, error) {
 				}
 
 				if !types.Implements(named, errorIface) {
-					pass.Reportf(arg.Pos(), "incorrect usage of errors")
+					pass.Reportf(arg.Pos(), "incorrect usage of errors.Is: &T{} used where only *T implements error")
 				}
 			}
 

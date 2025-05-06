@@ -92,7 +92,7 @@ func (r *RateLimitError) Is(target error) bool {
 
 func doerrorsisstuff() {
 	err := error(&RateLimitError{Message: "foo"})
-	if errors.Is(err, &RateLimitError{}) { // want `incorrect usage of errors`
+	if errors.Is(err, &RateLimitError{}) { // want `incorrect usage of errors\.Is: \&T\{\} used where only \*T implements error`
 		fmt.Println("yes, this error is the same as a generic RateLimitError")
 	} else {
 		fmt.Println("no, this is not the same as a generic RateLimitError")
