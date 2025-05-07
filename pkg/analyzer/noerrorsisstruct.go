@@ -1,4 +1,4 @@
-package rules
+package analyzer
 
 import (
 	"go/ast"

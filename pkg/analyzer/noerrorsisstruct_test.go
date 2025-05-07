@@ -1,11 +1,11 @@
-package rules_test
+package analyzer_test
 
 import (
 	"testing"
 
 	"golang.org/x/tools/go/analysis/analysistest"
 
-	"errorsis/internal/rules"
+	"errorsis/pkg/analyzer"
 )
 
 func TestErrorIsStruct(t *testing.T) {
@@ -13,5 +13,5 @@ func TestErrorIsStruct(t *testing.T) {
 
 	t.Parallel()
 
-	analysistest.Run(t, testDataDir, rules.NoErrorIsStruct, "./src/errorsisstruct/")
+	analysistest.Run(t, testDataDir, analyzer.NoErrorIsStruct, "./src/errorsisstruct/")
 }
