@@ -44,7 +44,7 @@ lint:
     - export PATH=${GOBIN}:${PATH}
     - go mod tidy -v
     - git diff | diff -u /dev/null -
-    - go install github.com/golangci/golangci-lint/cmd/golangci-lint@v2.1.6
+    - go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.1.6
     - golangci-lint run ./...
 
 go-test:
