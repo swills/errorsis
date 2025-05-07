@@ -1,11 +1,11 @@
 package main
 
 import (
-        "golang.org/x/tools/go/analysis"
+	"golang.org/x/tools/go/analysis"
 
-        "errorsis"
+	"errorsis"
 )
 
-func New(conf any) ([]*analysis.Analyzer, error) {
+func New(_ any) ([]*analysis.Analyzer, error) {
 	return []*analysis.Analyzer{errorsis.NoErrorIsStruct}, nil
 }
