@@ -3,7 +3,6 @@ on: [push]
 
 env:
   GOGC: 50
-  CGO_ENABLED: 1
 
 jobs:
   build:
@@ -27,8 +26,3 @@ jobs:
           export GOOS=${{ matrix.os }}
           export GOARCH=${{ matrix.arch }}
           go build -o errorsis ./cmd/errorsis
-      - name: Build Plugin
-        run: |
-          export GOOS=${{ matrix.os }}
-          export GOARCH=${{ matrix.arch }}
-          go build -buildmode=plugin plugin/errorsis.go
