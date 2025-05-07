@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: arc-runner-set-errorsis
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         targets:
