@@ -3,9 +3,9 @@ package main
 import (
 	"golang.org/x/tools/go/analysis/singlechecker"
 
-	"errorsis/pkg/analyzer"
+        "errorsis"
 )
 
 func main() {
-	singlechecker.Main(analyzer.NoErrorIsStruct)
+	singlechecker.Main(errorsis.NoErrorIsStruct)
 }

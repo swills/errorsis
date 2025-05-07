@@ -1,4 +1,5 @@
-package analyzer
+// Package errorsis is the library used to implement the errorsis command-line tool.
+package errorsis
 
 import (
 	"go/ast"
