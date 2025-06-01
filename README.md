@@ -16,7 +16,7 @@ interface.
 Ensure you have Go installed (version 1.23+).
 
 ```sh
-go build -o errorsis ./cmd/errorsis
+go build -trimpath -o errorsis ./cmd/errorsis
 ```
 
 ## Build with golangci-lint
@@ -33,7 +33,8 @@ build for usage as a Go plugin:
 go build -trimpath -buildmode=plugin -o errorsis.so plugin/errorsis.go
 ```
 
-The other is via its own [module plugin system](https://golangci-lint.run/plugins/module-plugins/).
+The other is via its own [module plugin system](https://golangci-lint.run/plugins/module-plugins/). See
+the [example module linter](https://github.com/golangci/example-plugin-module-linter) for more details.
 
 This package supports both, but note that the latter is preferred and recommended by `golangci-lint`.
 
