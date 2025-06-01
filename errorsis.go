@@ -6,6 +6,7 @@ import (
 	"go/token"
 	"go/types"
 
+	"github.com/golangci/plugin-module-register/register"
 	"golang.org/x/tools/go/analysis"
 )
 
@@ -86,4 +87,25 @@ func noErrorIsStruct(pass *analysis.Pass) (interface{}, error) {
 	}
 
 	return nil, nil //nolint:nilnil
+}
+
+type errorIsCheck struct {
+}
+
+var _ register.LinterPlugin
+
+func init() {
+	register.Plugin("errorsis", New)
+}
+
+func New(_ any) (register.LinterPlugin, error) { //nolint:ireturn // required by golangci-lint
+	return &errorIsCheck{}, nil
+}
+
+func (p *errorIsCheck) BuildAnalyzers() ([]*analysis.Analyzer, error) {
+	return []*analysis.Analyzer{NoErrorIsStruct}, nil
+}
+
+func (p *errorIsCheck) GetLoadMode() string {
+	return register.LoadModeTypesInfo
 }

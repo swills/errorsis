@@ -19,25 +19,32 @@ Ensure you have Go installed (version 1.23+).
 go build -o errorsis ./cmd/errorsis
 ```
 
-## Build as plugin for golangci-lint
+## Build with golangci-lint
 
-Usage as a plugin will only work with compatible versions of golangci-lint (we
-must use the same version of `golang.org/x/tools` as golangci-lint). This version
-has been built and tested against golangci-lint v2.1.6 (built from source, not
-sure about pre-built binaries). See the [example linter](https://github.com/golangci/example-plugin-linter/tree/1d4f00fda884c1928a9dbbfea865e7dc01e16477?tab=readme-ov-file#create-the-plugin-from-this-linter) for more details.
+Note, `golangci-lint` supports two different ways of building and using plugins.
+
+One is via a [go plugin](https://golangci-lint.run/plugins/go-plugins/). This will only work
+with compatible versions of golangci-lint (we must use the same version of `golang.org/x/tools` as
+golangci-lint). This version has been built and tested against golangci-lint v2.1.6 (built from
+source, not sure about pre-built binaries). See the [example linter](https://github.com/golangci/example-plugin-linter/tree/1d4f00fda884c1928a9dbbfea865e7dc01e16477?tab=readme-ov-file#create-the-plugin-from-this-linter) for more details. To
+build for usage as a Go plugin:
 
 ```sh
-go build -buildmode=plugin plugin/errorsis.go
+go build -trimpath -buildmode=plugin -o errorsis.so plugin/errorsis.go
 ```
 
+The other is via its own [module plugin system](https://golangci-lint.run/plugins/module-plugins/).
+
+This package supports both, but note that the latter is preferred and recommended by `golangci-lint`.
+
 ## Usage
-To run the linter directly on Go code:
+To run the linter standalone directly on Go code:
 
 ```sh
 ./errorsis ./...
 ```
 
-## Usage with golangci-lint
+## Usage with golangci-lint as Go plugin:
 
 Add something like this to your .golangci.yml
 
@@ -52,4 +59,42 @@ Add something like this to your .golangci.yml
           errorsis:
             path: /path/to/git/errorsis/errorsis.so
             description: Detects incorrect usage of errors.Is
+```
+
+## Usage with golangci-lint as Module plugin:
+
+Create `.custom-gcl.yml` similar to this:
+
+```yaml
+version: v2.1.6
+plugins:
+  - module: "github.com/swills/errorsis"
+    path: "/path/to/git/errorsis"
+```
+
+And put something similar to this in your `.golangci.yml`:
+
+```yaml
+    version: "2"
+    linters:
+      default: none
+      enable:
+        - errorsis
+      settings:
+        custom:
+          errorsis:
+            type: module
+            description: Detects incorrect usage of errors.Is
+```
+
+Then run:
+
+```shell
+golangci-lint -v custom
+```
+
+to build the custom `golangci-lint` and finally, run it:
+
+```shell
+./custom-gcl run
 ```

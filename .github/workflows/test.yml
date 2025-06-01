@@ -1,0 +1,21 @@
+name: Go
+on: [push]
+
+env:
+  GOGC: 50
+
+jobs:
+  build:
+    runs-on: arc-runner-set-errorsis
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: 'go.mod'
+      - name: Install dependencies
+        run: |
+          go get ./cmd/...
+      - name: Test
+        run: |
+          go test -shuffle=on -race ./...
