@@ -3,7 +3,7 @@ package main
 import (
 	"golang.org/x/tools/go/analysis"
 
-	"errorsis"
+	"github.com/swills/errorsis"
 )
 
 func New(_ any) ([]*analysis.Analyzer, error) {

@@ -3,7 +3,7 @@ package main
 import (
 	"golang.org/x/tools/go/analysis/singlechecker"
 
-	"errorsis"
+	"github.com/swills/errorsis"
 )
 
 func main() {
