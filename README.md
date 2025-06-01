@@ -64,7 +64,7 @@ Add something like this to your .golangci.yml
 
 ## Usage with golangci-lint as Module plugin:
 
-Create `.custom-gcl.yml` similar to this:
+Create `.custom-gcl.yml` similar to this if using a local working copy:
 
 ```yaml
 version: v2.1.6
@@ -73,7 +73,7 @@ plugins:
     path: "/path/to/git/errorsis"
 ```
 
-or like this:
+or like this if using Go proxy:
 
 ```yaml
 version: v2.1.6
@@ -83,20 +83,19 @@ plugins:
     version: v0.0.3
 ```
 
-
 And put something similar to this in your `.golangci.yml`:
 
 ```yaml
-    version: "2"
-    linters:
-      default: none
-      enable:
-        - errorsis
-      settings:
-        custom:
-          errorsis:
-            type: module
-            description: Detects incorrect usage of errors.Is
+version: "2"
+linters:
+  default: none
+  enable:
+    - errorsis
+  settings:
+    custom:
+      errorsis:
+        type: module
+        description: Detects incorrect usage of errors.Is
 ```
 
 Then run:
