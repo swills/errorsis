@@ -1,9 +1,8 @@
 package main
 
 import (
-	"golang.org/x/tools/go/analysis/singlechecker"
-
 	"github.com/swills/errorsis"
+	"golang.org/x/tools/go/analysis/singlechecker"
 )
 
 func main() {

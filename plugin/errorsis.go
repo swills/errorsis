@@ -1,9 +1,8 @@
 package main
 
 import (
-	"golang.org/x/tools/go/analysis"
-
 	"github.com/swills/errorsis"
+	"golang.org/x/tools/go/analysis"
 )
 
 func New(_ any) ([]*analysis.Analyzer, error) {

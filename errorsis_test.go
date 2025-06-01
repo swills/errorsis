@@ -3,9 +3,8 @@ package errorsis_test
 import (
 	"testing"
 
+	"github.com/swills/errorsis"
 	"golang.org/x/tools/go/analysis/analysistest"
-
-	"errorsis"
 )
 
 func TestErrorIsStruct(t *testing.T) {
