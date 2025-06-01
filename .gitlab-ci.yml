@@ -16,10 +16,11 @@ errorsis:
     - export GOFLAGS="-trimpath"
     - export CGO_ENABLED=0
     - export GOPROXY=https://athens.mouf.io
-    - export GO_LDFLAGS="-s -w -extldflags -static -buildid=${CI_COMMIT_SHA}"
+    - export GO_LDFLAGS="-buildid=${CI_COMMIT_SHA}"
     - export GOOS=freebsd
     - export GOARCH=amd64
     - go build -v "${GOFLAGS}" -ldflags="${GO_LDFLAGS}" ./cmd/...
+    - go build -v -o errorsis ./cmd/errorsis
 
 plugin:
   stage: build
@@ -30,7 +31,7 @@ plugin:
     - export GOPROXY=https://athens.mouf.io
     - export GOOS=freebsd
     - export GOARCH=amd64
-    - go build -buildmode=plugin plugin/errorsis.go
+    - go build -trimpath -buildmode=plugin -o errorsis.so plugin/errorsis.go
 
 lint:
   stage: test
