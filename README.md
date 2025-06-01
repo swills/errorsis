@@ -1,5 +1,9 @@
 # ErrorsIs Linter
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/swills/errorsis.svg)](https://pkg.go.dev/github.com/swills/errorsis)
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/swills/errorsis)](https://goreportcard.com/report/github.com/swills/errorsis)
+
 ## Overview
 ErrorsIs is a custom Go linter that detects incorrect usage of the
 `errors.Is()` function, specifically targeting cases where the second argument
