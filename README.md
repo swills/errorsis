@@ -73,6 +73,17 @@ plugins:
     path: "/path/to/git/errorsis"
 ```
 
+or like this:
+
+```yaml
+version: v2.1.6
+plugins:
+  - module: 'github.com/swills/errorsis'
+    import: 'github.com/swills/errorsis'
+    version: v0.0.3
+```
+
+
 And put something similar to this in your `.golangci.yml`:
 
 ```yaml
