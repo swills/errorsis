@@ -83,7 +83,7 @@ version: v2.1.6
 plugins:
   - module: 'github.com/swills/errorsis'
     import: 'github.com/swills/errorsis'
-    version: v0.0.3
+    version: v0.0.5
 ```
 
 And put something similar to this in your `.golangci.yml`:
