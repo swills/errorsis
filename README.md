@@ -2,6 +2,8 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/swills/errorsis.svg)](https://pkg.go.dev/github.com/swills/errorsis)
 [![Go Report Card](https://goreportcard.com/badge/github.com/swills/errorsis)](https://goreportcard.com/report/github.com/swills/errorsis)
+[![Go](https://github.com/swills/errorsis/actions/workflows/build-standalone.yml/badge.svg)](https://github.com/swills/errorsis/actions/workflows/build-standalone.yml)
+[![golangci-lint](https://github.com/swills/errorsis/actions/workflows/golangci-lint.yml/badge.svg)](https://github.com/swills/errorsis/actions/workflows/golangci-lint.yml)
 
 ## Overview
 ErrorsIs is a custom Go linter that detects incorrect usage of the
