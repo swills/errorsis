@@ -7,9 +7,9 @@
 
 ## Overview
 ErrorsIs is a custom Go linter that detects incorrect usage of the
-`errors.Is()` function, specifically targeting cases where the second argument
-is a pointer to a struct that does not properly implement the `error`
-interface.
+`errors.Is()` function, specifically focusing on cases where the second
+argument is a pointer to a struct that does not properly implement the
+`error` interface.
 
 ## Features
 - Detects improper usage of `errors.Is()` where the second argument is a
@@ -18,7 +18,7 @@ interface.
   accurate analysis.
 
 ## Build and Installation
-Ensure you have Go installed (version 1.23+).
+Ensure you have Go installed (version 1.24+).
 
 ```sh
 go build -trimpath -o errorsis ./cmd/errorsis
@@ -30,12 +30,12 @@ Note, `golangci-lint` supports two different ways of building and using plugins.
 
 One is via a [go plugin](https://golangci-lint.run/plugins/go-plugins/). This will only work
 with compatible versions of golangci-lint (we must use the same version of `golang.org/x/tools` as
-golangci-lint). This version has been built and tested against golangci-lint v2.1.6 (built from
+golangci-lint). This version has been built and tested against golangci-lint v2.4.0 (built from
 source, not sure about pre-built binaries). See the [example linter](https://github.com/golangci/example-plugin-linter/tree/1d4f00fda884c1928a9dbbfea865e7dc01e16477?tab=readme-ov-file#create-the-plugin-from-this-linter) for more details. To
 build for usage as a Go plugin:
 
 ```sh
-go build -trimpath -buildmode=plugin -o errorsis.so plugin/errorsis.go
+go build -buildmode=plugin -o errorsis.so plugin/errorsis.go
 ```
 
 The other is via its own [module plugin system](https://golangci-lint.run/plugins/module-plugins/). See
@@ -72,7 +72,7 @@ Add something like this to your .golangci.yml
 Create `.custom-gcl.yml` similar to this if using a local working copy:
 
 ```yaml
-version: v2.1.6
+version: v2.4.0
 plugins:
   - module: "github.com/swills/errorsis"
     path: "/path/to/git/errorsis"
@@ -81,7 +81,7 @@ plugins:
 or like this if using Go proxy:
 
 ```yaml
-version: v2.1.6
+version: v2.4.0
 plugins:
   - module: 'github.com/swills/errorsis'
     import: 'github.com/swills/errorsis'
